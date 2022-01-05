@@ -1,0 +1,127 @@
+<html>
+<head>
+<tiltle>Shooting Game </tiltle>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+
+<div class="container" align="center">
+  <h1>Welcome to the Game!</h1>
+  <h2>Let's GOOOOO!!</h2>
+  <h3>Game <p id="game" data-val="1">1</p></h3>
+    <button type="button" onclick="start()">Start</button>
+  </div>
+
+
+Player 1 - Won - <p id="Player1score" data-val="0">0</p> <br>
+Player 2 - Won - <p id="Player2score" data-val="0">0</p>
+
+
+Player 1 - tournment score<p id="t1" data-val="0">0</p>
+Player 2 - tournment score<p id="t2" data-val="0">0</p>
+
+<script>
+
+
+
+
+
+function start() {
+  c1= parseInt(document.getElementById("t1").getAttribute("data-val"));
+  c2= parseInt(document.getElementById("t2").getAttribute("data-val"));
+
+
+  s1= parseInt(document.getElementById("Player1score").getAttribute("data-val"));
+
+  s2= parseInt(document.getElementById("Player2score").getAttribute("data-val"));
+  g=parseInt(document.getElementById("game").getAttribute("data-val"));
+  var player1health=100;
+  var player2health=100;
+
+
+while(player1health>0 && player2health>0){
+  let x1 = Math.floor((Math.random() * 6) + 0);
+  let x2= Math.floor((Math.random() * 6) + 0);
+
+           player1health-=x2;
+           //console.log(player1health);
+           if(player1health<=0){
+             s2=s2+1;
+             document.getElementById("Player2score").setAttribute("data-val",s2);
+             document.getElementById("Player2score").innerHTML=s2;
+
+             if(s2>=3){
+
+               alert("Player 2 WON the Game");
+
+               c2=c2+1;
+               document.getElementById("t2").setAttribute("data-val",c2);
+               document.getElementById("t2").innerHTML=c2;
+               console.log(x2);
+               g+=1;
+               document.getElementById("game").setAttribute("data-val",g);
+               document.getElementById("game").innerHTML=g;
+               document.getElementById("Player2score").innerHTML=0;
+               document.getElementById("Player2score").setAttribute("data-val",0);
+               document.getElementById("Player1score").setAttribute("data-val",0);
+               document.getElementById("Player1score").innerHTML=0;
+
+               if(c2>=3) {alert("Player 2 WON the tournment");
+
+               alert("Game Over! Refresh the Page to continue");
+               }
+               player1health=100;
+               player2health=100;
+               break;
+
+
+
+             }
+             break;
+           }
+
+          player2health-=x1;
+          //console.log(player2health);
+          if(player2health<=0){
+            s1=s1+1;
+          document.getElementById("Player1score").setAttribute("data-val",s1);
+          document.getElementById("Player1score").innerHTML=s1;
+          if(s1>=3){
+            alert("Player 1 WON the Game");
+
+            c1=c1+1;
+            document.getElementById("t1").setAttribute("data-val",c1);
+            document.getElementById("t1").innerHTML=c1;
+            g+=1;
+            console.log(x1);
+            document.getElementById("game").setAttribute("data-val",g);
+            document.getElementById("game").innerHTML=g;
+            document.getElementById("Player2score").innerHTML=0;
+            document.getElementById("Player2score").setAttribute("data-val",0);
+            document.getElementById("Player1score").setAttribute("data-val",0);
+            document.getElementById("Player1score").innerHTML=0;
+
+
+            if(c1>=3){
+             alert("Player 1 WON the tournment");
+             
+             alert("Game Over! Refresh the Page to continue");
+
+
+             break;}
+
+            player1health=100;
+            player2health=100;
+          }
+          break;
+        }
+
+  }
+
+}
+</script>
+
+</html>
